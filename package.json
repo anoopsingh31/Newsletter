@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js" 
+    "start": "node app.js"
   },
   "author": "Anoop Singh",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.953.0",
     "express": "^4.17.1",
     "request": "^2.88.2"
   }

@@ -40,10 +40,10 @@ app.post("/",(req,res)=>{
      };
      const jsonData =JSON.stringify(data);
      
-     const url="https://us6.api.mailchimp.com/3.0/lists/"+accessKeyId;
+     const url="https://us6.api.mailchimp.com/3.0/lists/"+s3.accessKeyId;
      const options={
             method: "POST",
-            auth: "anoop:"+secretAccessKey+"-us6"
+            auth: "anoop:"+s3.secretAccessKey+"-us6"
      }
 
 
