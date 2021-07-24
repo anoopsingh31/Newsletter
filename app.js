@@ -56,7 +56,7 @@ app.post("/",(req,res)=>{
              else
              res.sendFile(__dirname+"/failure.htm")
 
-             console.log(DATA.error_count);
+             console.log(DATA);
          })
      })
      request.write(jsonData)
@@ -73,6 +73,3 @@ app.post("/failure",function(req,res)
 app.listen(process.env.PORT || 3000,()=>{
     console.log("server is running on port 3000")
 })
-
-//9530c9899bfa64b9ca696bd5fdeb49d5-us6
-//abf757eff5
