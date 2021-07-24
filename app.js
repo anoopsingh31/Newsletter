@@ -2,6 +2,7 @@ const express = require("express");
 const request =require("request");
 const https =require("https");
 const app =express();
+const aws = require('aws-sdk');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
@@ -18,6 +19,12 @@ app.post("/",(req,res)=>{
      const firstName=req.body.firstName;
      const lastName=req.body.lastName;
      const userEmail=req.body.userEmail;
+     
+
+     let s3 = new aws.S3({
+         accessKeyId: process.env.S3_KEY,
+         secretAccessKey: process.env.S3_SECRET
+     });
 
      const data={
         members:[
@@ -33,10 +40,10 @@ app.post("/",(req,res)=>{
      };
      const jsonData =JSON.stringify(data);
      
-     const url="https://us6.api.mailchimp.com/3.0/lists/abf757eff5";
+     const url="https://us6.api.mailchimp.com/3.0/lists/"+accessKeyId;
      const options={
             method: "POST",
-            auth: "anoop:9530c9899bfa64b9ca696bd5fdeb49d5-us6"
+            auth: "anoop:"+secretAccessKey+"-us6"
      }
 
 
