@@ -2,7 +2,7 @@ const express = require("express");
 const request =require("request");
 const https =require("https");
 const app =express();
-// const aws = require('aws-sdk');
+
 require('dotenv').config();
 
 app.use(express.urlencoded({extended: true}));
@@ -20,12 +20,6 @@ app.post("/",(req,res)=>{
      const firstName=req.body.firstName;
      const lastName=req.body.lastName;
      const userEmail=req.body.userEmail;
-     
-
-    //  let s3 = new aws.S3({
-    //      accessKeyId: process.env.S3_KEY,
-    //      secretAccessKey: process.env.S3_SECRET
-    //  });
 
      const data={
         members:[
@@ -51,8 +45,6 @@ app.post("/",(req,res)=>{
      const request=https.request(url,options,function(response)
      {
         console.log(response.statusCode)
-
-        
 
          response.on("data",function(data)
          {
@@ -81,6 +73,3 @@ app.post("/failure",function(req,res)
 app.listen(process.env.PORT || 3000,()=>{
     console.log("server is running on port 3000")
 })
-
-
-//abf757eff5
