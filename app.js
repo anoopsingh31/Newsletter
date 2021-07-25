@@ -2,7 +2,8 @@ const express = require("express");
 const request =require("request");
 const https =require("https");
 const app =express();
-const aws = require('aws-sdk');
+// const aws = require('aws-sdk');
+require('dotenv').config();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
@@ -21,10 +22,10 @@ app.post("/",(req,res)=>{
      const userEmail=req.body.userEmail;
      
 
-     let s3 = new aws.S3({
-         accessKeyId: process.env.S3_KEY,
-         secretAccessKey: process.env.S3_SECRET
-     });
+    //  let s3 = new aws.S3({
+    //      accessKeyId: process.env.S3_KEY,
+    //      secretAccessKey: process.env.S3_SECRET
+    //  });
 
      const data={
         members:[
@@ -40,10 +41,10 @@ app.post("/",(req,res)=>{
      };
      const jsonData =JSON.stringify(data);
      
-     const url="https://us6.api.mailchimp.com/3.0/lists/"+s3.accessKeyId;
+     const url="https://us6.api.mailchimp.com/3.0/lists/"+process.env.S3_KEY;
      const options={
             method: "POST",
-            auth: "anoop:"+s3.secretAccessKey+"-us6"
+            auth: "anoop:"+process.env.S3_SECRET
      }
 
 
@@ -80,3 +81,6 @@ app.post("/failure",function(req,res)
 app.listen(process.env.PORT || 3000,()=>{
     console.log("server is running on port 3000")
 })
+
+
+//abf757eff5
